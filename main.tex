@@ -78,25 +78,22 @@
 % ================================================================
 \begin{titlepage}
 \centering
-\vspace*{0.5cm}
+\vspace*{2.5cm}
 {\large\bfseries UNIVERSIDAD NACIONAL DE SAN AGUST\'IN}\\[2pt]
 {\large\bfseries FACULTAD DE PRODUCCI\'ON Y SERVICIOS}\\[2pt]
-{\large\bfseries ESCUELA PROFESIONAL DE INGENIER\'IA DE SISTEMAS}\\[1.5cm]
+{\large\bfseries ESCUELA PROFESIONAL DE INGENIER\'IA DE SISTEMAS}\\[1.2cm]
 
-\begin{tikzpicture}
-\draw[unsared, line width=1.2pt] (0,0) circle (1.7cm);
-\node[unsared, font=\Huge\bfseries] at (0,0) {IO};
-\end{tikzpicture}\\[1cm]
+{\includegraphics[width=0.2\textwidth]{images/unsalogo.png}}
 
-{\Large\bfseries Investigaci\'on de Operaciones}\\[1.8cm]
+{\Large\bfseries Investigaci\'on de Operaciones}\\[1.4cm]
 
 {\Large\bfseries PROYECTO INTEGRADOR DEL CURSO}\\[0.4cm]
 \rule{0.6\textwidth}{0.6pt}\\[0.4cm]
 {\Large\itshape ``An\'alisis del transporte en el Per\'u: optimizaci\'on de una red\\
 de distribuci\'on de carga agroexportable en la regi\'on Arequipa''}\\[0.3cm]
-\rule{0.6\textwidth}{0.6pt}\\[2cm]
+\rule{0.6\textwidth}{0.6pt}\\[1cm]
 
-\begin{minipage}{0.75\textwidth}
+\begin{minipage}{0.65\textwidth}
 \begin{flushleft}
 \textbf{INTEGRANTES:}
 \begin{itemize}[leftmargin=1.2cm]
@@ -134,19 +131,25 @@ El presente proyecto integrador aborda la optimizaci\'on de la red de transporte
 \section{Introducci\'on}
 % ================================================================
 
-\subsection*{Contexto general}
+\subsection{Contexto general}
 El transporte terrestre de carga concentra la mayor parte de la movilizaci\'on de mercanc\'ias en el Per\'u dado el predominio de la red vial sobre otros modos como el ferroviario o el fluvial en la macrorregi\'on sur del pa\'is (Naciones Unidas, 2009). En Arequipa, la actividad agroexportadora depende casi por completo de camiones que recorren corredores nacionales como la Panamericana Sur y la carretera Arequipa--Puno para llevar la producci\'on desde las zonas de cultivo hasta los puertos, mercados mayoristas y terminales terrestres de destino.
 
-\subsection*{Importancia del problema}
-Dos presiones conviven en esta operaci\'on. Por un lado, el costo log\'istico —que en econom\'ias en desarrollo puede representar m\'as del 20\% del valor final del producto exportado (Sánchez de la Piedra et al., 2024)— obliga a las empresas a buscar la ruta de menor costo posible. Por otro lado, los mismos corredores usados para el transporte de carga registran una siniestralidad vial persistente: solo en las carreteras Panamericana Sur y Arequipa--Puno se han reportado cientos de accidentes anuales, con puntos cr\'iticos identificados en sectores como Ocoña, Camaná e Imata (ONSV, 2026). Optimizar \'unicamente por costo, sin considerar el riesgo de la ruta, puede exponer a las unidades de transporte —y a la carga— a corredores de alta siniestralidad.
+\subsection{Contexto de la organizaci\'on}
+El caso de estudio corresponde a una empresa acopiadora y comercializadora de productos agr\'icolas (p\'aprika, palta y quinua) que opera en el valle de Majes y zonas aleda\~nas de la regi\'on Arequipa\footnote{Por acuerdo con la organizaci\'on colaboradora, el nombre comercial se mantiene reservado en este documento p\'ublico; internamente se le identifica como \emph{``Agroexportadora Valle Majes''}.}. La empresa recibe producto de peque\~nos y medianos agricultores en tres centros de acopio (Majes, Caman\'a y La Joya) y lo distribuye hacia cuatro destinos: el Puerto de Matarani (exportaci\'on), el Mercado Mayorista de Lima, y los terminales terrestres de Cusco y Puno (mercado interno regional).
 
-\subsection*{Justificaci\'on del estudio}
+\subsection{Importancia del problema}
+Dos presiones conviven en esta operaci\'on. Por un lado, el costo log\'istico ---que en econom\'ias en desarrollo puede representar m\'as del 20\% del valor final del producto exportado (S\'anchez de la Piedra et al., 2024)--- obliga a las empresas a buscar la ruta de menor costo posible. Por otro lado, los mismos corredores usados para el transporte de carga registran una siniestralidad vial persistente: solo en las carreteras Panamericana Sur y Arequipa--Puno se han reportado cientos de accidentes anuales, con puntos cr\'iticos identificados en sectores como Oco\~na, Caman\'a e Imata (ONSV, 2026). Optimizar \'unicamente por costo, sin considerar el riesgo de la ruta, puede exponer a las unidades de transporte ---y a la carga--- a corredores de alta siniestralidad.
+
+\subsection{Situaci\'on problem\'atica}
+Actualmente la asignaci\'on de camiones a rutas se realiza de manera emp\'irica, seg\'un la disponibilidad del transportista y sin un criterio formal de costo ni de seguridad vial. Esto genera dos consecuencias observables: sobrecostos por el uso de rutas m\'as largas de lo necesario hacia ciertos destinos, y una exposici\'on no cuantificada de las unidades a tramos de alta siniestralidad, en particular el sector de Imata (carretera Arequipa--Puno) y los tramos costeros de Oco\~na y Caman\'a (Panamericana Sur), reconocidos por el Observatorio Nacional de Seguridad Vial como puntos cr\'iticos (ONSV, 2026).
+
+\subsection{Justificaci\'on del estudio}
 La Investigaci\'on de Operaciones ofrece, a trav\'es del modelo cl\'asico de transporte, un marco adecuado para conciliar ambos objetivos en una \'unica funci\'on objetivo, permitiendo a la organizaci\'on tomar decisiones de asignaci\'on de carga que sean simult\'aneamente eficientes en costo y prudentes en materia de seguridad vial.
 
-\subsection*{Objetivo general}
+\subsection{Objetivo general}
 Optimizar la asignaci\'on mensual de carga agroexportable desde los centros de acopio de la empresa hacia sus puntos de destino, minimizando el costo total de transporte ajustado por un factor de riesgo de accidentalidad vial.
 
-\subsection*{Objetivos espec\'ificos}
+\subsection{Objetivos espec\'ificos}
 \begin{enumerate}[label=\alph*)]
   \item Caracterizar la situaci\'on actual de distribuci\'on de carga de la empresa y los corredores viales que utiliza.
   \item Formular un modelo matem\'atico de transporte que integre costo de flete y riesgo de accidentes.
@@ -155,16 +158,6 @@ Optimizar la asignaci\'on mensual de carga agroexportable desde los centros de a
   \item Formular recomendaciones operativas para la organizaci\'on.
 \end{enumerate}
 
-% ================================================================
-\section{Descripci\'on del problema}
-% ================================================================
-
-\subsection{Contexto de la organizaci\'on}
-El caso de estudio corresponde a una empresa acopiadora y comercializadora de productos agr\'icolas (p\'aprika, palta y quinua) que opera en el valle de Majes y zonas aleda\~nas de la regi\'on Arequipa\footnote{Por acuerdo con la organizaci\'on colaboradora, el nombre comercial se mantiene reservado en este documento p\'ublico; internamente se le identifica como \emph{``Agroexportadora Valle Majes''}. El equipo debe reemplazar esta nota y los datos de campo de la secci\'on \ref{sec:evidencias} por la informaci\'on real recogida en su visita a la organizaci\'on elegida.}. La empresa recibe producto de peque\~nos y medianos agricultores en tres centros de acopio (Majes, Caman\'a y La Joya) y lo distribuye hacia cuatro destinos: el Puerto de Matarani (exportaci\'on), el Mercado Mayorista de Lima, y los terminales terrestres de Cusco y Puno (mercado interno regional).
-
-\subsection{Situaci\'on problem\'atica}
-Actualmente la asignaci\'on de camiones a rutas se realiza de manera emp\'irica, seg\'un la disponibilidad del transportista y sin un criterio formal de costo ni de seguridad vial. Esto genera dos consecuencias observables: sobrecostos por el uso de rutas m\'as largas de lo necesario hacia ciertos destinos, y una exposici\'on no cuantificada de las unidades a tramos de alta siniestralidad, en particular el sector de Imata (carretera Arequipa--Puno) y los tramos costeros de Ocoña y Caman\'a (Panamericana Sur), reconocidos por el Observatorio Nacional de Seguridad Vial como puntos cr\'iticos (ONSV, 2026).
-
 \subsection{Evidencias del trabajo de campo}
 \label{sec:evidencias}
 \begin{evidencia}{Espacio para evidencias reales del equipo}
@@ -172,7 +165,7 @@ Esta secci\'on debe completarse con evidencia primaria recolectada por el equipo
 \end{evidencia}
 
 % ================================================================
-\section{An\'alisis del problema}
+\section{Marco te\'orico}
 % ================================================================
 
 \subsection{Actores involucrados}
@@ -185,10 +178,11 @@ Esta secci\'on debe completarse con evidencia primaria recolectada por el equipo
   \item \textbf{Aseguradoras}: fijan primas de seguro de carga en funci\'on del riesgo de la ruta.
 \end{itemize}
 
-\subsection{Variables relevantes}
+\subsection{Variables relevantes del problema}
 La informaci\'on clave recogida para construir el modelo incluye: la capacidad mensual de acopio de cada centro (oferta), el requerimiento mensual de cada destino (demanda), el costo de flete por tonelada seg\'un distancia y peaje de cada ruta, y un \'indice de siniestralidad vial por ruta, construido a partir de reportes p\'ublicos de accidentalidad en los corredores Panamericana Sur y Arequipa--Puno (ONSV, 2026).
 
 \subsection{Supuestos del modelo}
+\label{sec:supuestos}
 \begin{itemize}
   \item El problema se balancea en un horizonte mensual: la oferta total agregada es igual a la demanda total agregada (2\,300 toneladas).
   \item El costo de flete por tonelada es lineal respecto a la cantidad transportada (no se consideran descuentos por volumen).
@@ -197,14 +191,12 @@ La informaci\'on clave recogida para construir el modelo incluye: la capacidad m
   \item Toda la flota disponible cumple con la normativa de pesos y medidas del MTC (D.S. N.\textsuperscript{o} 017-2009-MTC).
 \end{itemize}
 
-% ================================================================
-\section{Modelaci\'on matem\'atica}
-% ================================================================
+\subsection{Modelaci\'on matem\'atica}
 
-\subsection{Objetivo del modelo}
+\subsubsection{Objetivo del modelo}
 Determinar la cantidad de carga $x_{ij}$ (en toneladas) que debe transportarse desde cada centro de acopio $i$ hacia cada destino $j$, de manera que se minimice el costo total mensual de transporte, entendido como la suma del costo de flete y una penalizaci\'on monetaria proporcional al riesgo de accidentalidad de la ruta utilizada, satisfaciendo \'integramente la oferta disponible en cada centro de acopio y la demanda de cada destino.
 
-\subsection{Variables de decisi\'on}
+\subsubsection{Variables de decisi\'on}
 Se definen doce variables de decisi\'on continuas y no negativas, correspondientes a las combinaciones origen--destino (Cuadro~\ref{tab:variables}):
 \[
 x_{ij} = \text{toneladas de carga transportadas desde el centro de acopio } i \text{ hacia el destino } j, \qquad x_{ij}\ge 0
@@ -229,7 +221,7 @@ con $i \in I = \{\text{Majes, Caman\'a, La Joya}\}$ y $j \in J = \{\text{Mataran
 \end{tabular}
 \end{table}
 
-\subsection{Par\'ametros}
+\subsubsection{Par\'ametros}
 \begin{table}[h]
 \centering
 \caption{Oferta de los centros de acopio (toneladas/mes)}
@@ -277,14 +269,14 @@ La Joya  & 55 & 405 & 210 & 125 & 3 & 8 & 6 & 5 \\
 
 \noindent El factor de conversi\'on riesgo--costo se fija en $\lambda = 10$ soles por punto de \'indice de riesgo, que representa el sobrecosto asegurador y el costo social esperado de operar en un corredor con mayor siniestralidad hist\'orica.
 
-\subsection{Funci\'on objetivo}
+\subsubsection{Funci\'on objetivo}
 \begin{equation}
 \min Z = \sum_{i\in I}\sum_{j\in J} \big(c_{ij} + \lambda\, r_{ij}\big)\, x_{ij}
 \label{eq:objetivo}
 \end{equation}
 La funci\'on objetivo~\eqref{eq:objetivo} representa el costo total mensual de la operaci\'on de transporte, incorporando en un solo coeficiente $(c_{ij}+\lambda r_{ij})$ tanto el flete como el costo de riesgo asociado a cada arco origen--destino.
 
-\subsection{Restricciones}
+\subsubsection{Restricciones}
 \begin{align}
 \sum_{j\in J} x_{ij} &= S_i, \quad \forall i\in I &&\text{(oferta: todo lo acopiado se despacha)}\label{eq:oferta}\\
 \sum_{i\in I} x_{ij} &= D_j, \quad \forall j\in J &&\text{(demanda: se cubre lo requerido por cada destino)}\label{eq:demanda}\\
@@ -292,9 +284,7 @@ x_{ij} &\ge 0, \quad \forall i\in I,\ j\in J &&\text{(no negatividad)}\label{eq:
 \end{align}
 La restricci\'on~\eqref{eq:oferta} asegura que toda la carga disponible en cada centro de acopio sea despachada; la restricci\'on~\eqref{eq:demanda} garantiza que la demanda de cada destino quede completamente satisfecha; y~\eqref{eq:nonneg} impide asignaciones negativas de carga. Como la oferta total (2\,300\,t) es igual a la demanda total (2\,300\,t), el problema est\'a \textbf{balanceado} y ambas familias de restricciones pueden plantearse como igualdades.
 
-% ================================================================
-\section{Algoritmo para la soluci\'on del modelo}
-% ================================================================
+\subsection{Algoritmo para la soluci\'on del modelo}
 El problema formulado corresponde a un caso particular de programaci\'on lineal conocido como \textbf{modelo de transporte}, caracterizado por una matriz de restricciones totalmente unimodular que garantiza soluciones \'optimas enteras cuando la oferta y la demanda son enteras (Hillier \& Lieberman, 2015). Se evaluaron las siguientes t\'ecnicas estudiadas en el curso:
 
 \begin{itemize}
@@ -307,13 +297,42 @@ El problema formulado corresponde a un caso particular de programaci\'on lineal 
 Se seleccion\'o el \textbf{modelo de transporte}, resuelto computacionalmente mediante programaci\'on lineal general (m\'etodo Simplex revisado, a trav\'es del solver GLPK invocado desde Pyomo), ya que produce autom\'aticamente la soluci\'on \'optima de m\'inimo costo sin necesidad de iterar manualmente el m\'etodo MODI, preservando la interpretaci\'on econ\'omica cl\'asica del modelo de transporte.
 
 % ================================================================
-\section{Resoluci\'on del modelo}
+\section{Metodolog\'ia}
 % ================================================================
 
-\subsection{Software utilizado}
+\subsection{Criterios de decisi\'on del modelo}
+El modelo de transporte decide \textbf{cu\'anto enviar} y \textbf{c\'omo hacerlo} en la red log\'istica de Arequipa, considerando los siguientes criterios:
+\begin{itemize}
+  \item \textbf{Cantidad a enviar:} desde un origen hacia un destino (transporte desde $i \to j$) para minimizar costos o minimizar tiempo.
+  \item \textbf{Momento del env\'io:} el intervalo temporal (mensual) en el que se asigna el flujo.
+  \item \textbf{Rutas disponibles:} elegidas seg\'un la red vial (arcos) entre centros de acopio y destinos.
+  \item \textbf{Capacidad de carga:} respetar la capacidad m\'axima de transporte por ruta.
+\end{itemize}
+
+\subsection{Datos recolectados}
+Para la construcci\'on del modelo se recopil\'o la siguiente informaci\'on:
+\begin{itemize}
+  \item Matriz de costos de flete por ruta (S/.\ por tonelada).
+  \item Matriz de distancias y tiempos de recorrido.
+  \item Ofertas de los centros de acopio y demandas de los destinos.
+  \item Capacidades de las unidades de transporte.
+  \item \'Indice de siniestralidad vial por corredor (ONSV, 2026).
+\end{itemize}
+
+\subsection{Retroan\'alisis del modelo seleccionado}
+Se realiz\'o una revisi\'on del modelo de transporte cl\'asico como caso particular de programaci\'on lineal, caracterizado por una matriz de restricciones totalmente unimodular que garantiza soluciones \'optimas enteras cuando la oferta y la demanda son enteras (Hillier \& Lieberman, 2015). Se identificaron los supuestos t\'ipicos, variables usuales y m\'etodos de soluci\'on para justificar la elecci\'on computacional.
+
+\subsection{Implementaci\'on computacional}
 El modelo se implement\'o en \textbf{Python 3} utilizando la librer\'ia de modelado \textbf{Pyomo}, con el solver de programaci\'on lineal \textbf{GLPK} (GNU Linear Programming Kit). Como verificaci\'on cruzada, el mismo modelo se resolvi\'o de forma independiente con \texttt{scipy.optimize.linprog} (solver HiGHS), obteni\'endose id\'entico valor \'optimo, lo que valida la correcta formulaci\'on del modelo.
 
-\subsection{Implementaci\'on en el software}
+La pila tecnol\'ogica completa utilizada fue:
+\begin{itemize}
+  \item \textbf{Python 3} con la librer\'ia \textbf{Pyomo} para la formulaci\'on del modelo.
+  \item \textbf{GLPK} (GNU Linear Programming Kit) como solver de programaci\'on lineal.
+  \item \textbf{SciPy} (solver HiGHS) para verificaci\'on cruzada.
+  \item \textbf{Jupyter + Git} para reproducibilidad del c\'odigo.
+\end{itemize}
+
 El Cuadro~\ref{lst:pyomo} (reproducido \'integramente en el Anexo~A) muestra la implementaci\'on del modelo en Pyomo: se definen los conjuntos de or\'igenes y destinos, los par\'ametros de oferta, demanda, costo de flete e \'indice de riesgo, la funci\'on objetivo~\eqref{eq:objetivo} y las restricciones~\eqref{eq:oferta}--\eqref{eq:nonneg}.
 
 \begin{figure}[h]
@@ -386,28 +405,22 @@ La Joya  & 0   & 0   & 350 & 150 \\
 \label{fig:red}
 \end{figure}
 
-% ================================================================
-\section{An\'alisis e interpretaci\'on}
-% ================================================================
-La soluci\'on \'optima concentra el env\'io de Majes casi \'integramente hacia Matarani (900 de sus 1\,100 toneladas), la ruta de menor costo y menor riesgo del sistema. Caman\'a destina toda su producci\'on a Lima, ruta larga pero la m\'as barata disponible para ese centro de acopio dado que su costo hacia Matarani, aunque m\'as corto, no puede absorber por s\'i solo la demanda de Lima. La Joya, por su ubicaci\'on relativa, atiende \'integramente Cusco y Puno, evitando el tramo m\'as costoso y riesgoso hacia Lima.
+\subsection{Dise\~no experimental}
+Se definieron dos escenarios para comparar la soluci\'on \'optima:
 
 \begin{itemize}
-  \item \textbf{¿Qu\'e decisiones deber\'ian tomarse?} Consolidar el eje Majes--Matarani como ruta principal, y reservar la flota con mejores condiciones de seguridad (frenos ABS, GPS, choferes con mayor antig\"uedad) para las rutas de Lima y Cusco, que concentran el mayor riesgo acumulado.
-  \item \textbf{¿Qu\'e beneficios genera la soluci\'on?} Respecto a una asignaci\'on emp\'irica sin criterio de optimizaci\'on (que en la pr\'actica tiende a repartir carga de forma proporcional a la oferta de cada centro), el modelo reduce el costo total y, expl\'icitamente, evita rutas de alto riesgo cuando existen alternativas de costo similar.
-  \item \textbf{¿Es una soluci\'on viable?} S\'i: respeta la capacidad de acopio, la demanda de cada destino y no requiere inversi\'on adicional, solo un cambio en el criterio de asignaci\'on de las \'ordenes de despacho.
-  \item \textbf{¿Qu\'e limitaciones presenta?} El modelo asume costos y riesgos constantes durante el mes, no captura la disponibilidad real de camiones por d\'ia, ni las condiciones clim\'aticas variables del corredor Arequipa--Puno (relevantes en la temporada de heladas, seg\'un lo reportado por la Polic\'ia de Carreteras (ONSV, 2026)).
+  \item \textbf{Escenario A (sin optimizaci\'on):} asignaci\'on emp\'irica basada en criterios operativos sin criterio formal de costo ni seguridad.
+  \item \textbf{Escenario B (optimizado):} soluci\'on con el modelo matem\'atico de transporte con penalizaci\'on por riesgo.
 \end{itemize}
 
-% ================================================================
-\section{An\'alisis de sensibilidad}
+\subsection{An\'alisis de sensibilidad}
 \label{sec:sensibilidad}
-% ================================================================
 Se evaluaron dos escenarios adicionales al caso base, resueltos con el mismo modelo de Pyomo:
 
-\subsection*{Escenario A: incremento de 20\% en el costo de combustible}
+\subsubsection*{Escenario A: incremento de 20\% en el costo de combustible}
 Se increment\'o uniformemente el costo de flete $c_{ij}$ en 20\%, manteniendo constante el \'indice de riesgo. El patr\'on \'optimo de env\'ios \textbf{no cambia} (la estructura de rutas se mantiene), pero el costo total sube a S/.\ 641\,800.00, un incremento de \textbf{15.5\%} respecto del caso base.
 
-\subsection*{Escenario B: reducci\'on de 30\% en la oferta de Majes (estr\'es h\'idrico)}
+\subsubsection*{Escenario B: reducci\'on de 30\% en la oferta de Majes (estr\'es h\'idrico)}
 Se simul\'o una ca\'ida de 30\% en la oferta de Majes (de 1\,100 a 770 toneladas), compensada por un incremento equivalente en La Joya (de 500 a 830 toneladas), manteniendo el balance oferta--demanda. El plan \'optimo se reconfigura: La Joya absorbe 230 toneladas adicionales hacia Matarani, y el costo total apenas aumenta a S/.\ 556\,050.00 (+0.05\%).
 
 \begin{figure}[h]
@@ -434,15 +447,14 @@ Se simul\'o una ca\'ida de 30\% en la oferta de Majes (de 1\,100 a 770 toneladas
 
 \noindent\textbf{Interpretaci\'on:} el modelo es \textbf{robusto ante cambios en la disponibilidad de recursos} (Escenario B), porque la red tiene rutas alternativas de costo similar que permiten reasignar la carga con un impacto marginal. En cambio, es \textbf{sensible al precio del combustible} (Escenario A), porque este afecta por igual a todas las rutas y no puede evitarse mediante reasignaci\'on; ello sugiere gestionar este riesgo mediante contratos de abastecimiento de combustible a precio fijo o coberturas financieras, m\'as que mediante decisiones de ruteo.
 
-% ================================================================
-\section{Reflexi\'on sobre el proceso de modelaci\'on}
-% ================================================================
+\subsection{Reflexi\'on sobre el proceso de modelaci\'on}
+\label{sec:reflexion}
 \noindent\textit{Nota para el equipo: las respuestas deben basarse en la experiencia real vivida durante el desarrollo del proyecto y no limitarse a definiciones te\'oricas. El siguiente texto es una gu\'ia de referencia elaborada sobre el modelo desarrollado; complementen o ajusten cada respuesta con sus propias vivencias durante las visitas de campo, coordinaciones con la empresa y el proceso de resoluci\'on.}
 
 \begin{enumerate}
 \item \textbf{¿Por qu\'e la Investigaci\'on de Operaciones era una metodolog\'ia adecuada para este problema?} Porque la situaci\'on encaja exactamente en la estructura de un problema de asignaci\'on de flujos entre or\'igenes con capacidad limitada y destinos con demanda fija, para el cual el modelo de transporte ofrece una soluci\'on \'optima garantizada en tiempo polinomial.
 \item \textbf{¿Qu\'e informaci\'on fue m\'as dif\'icil de obtener y c\'omo resolvieron esa dificultad?} La cuantificaci\'on del riesgo de accidentalidad por ruta en una escala comparable con el costo monetario; se resolvi\'o construyendo un \'indice ordinal (0--10) a partir de reportes p\'ublicos de siniestralidad por corredor y aplicando un factor de conversi\'on $\lambda$ pactado con el equipo.
-\item \textbf{¿Qu\'e supuestos realizaron para construir el modelo?} Balance exacto entre oferta y demanda mensual, linealidad del costo de flete, constancia del \'indice de riesgo durante el periodo de an\'alisis (ver Secci\'on~4.3).
+\item \textbf{¿Qu\'e supuestos realizaron para construir el modelo?} Balance exacto entre oferta y demanda mensual, linealidad del costo de flete, constancia del \'indice de riesgo durante el periodo de an\'alisis (ver Secci\'on~\ref{sec:supuestos}).
 \item \textbf{¿Qu\'e elementos de la realidad no pudieron representar matem\'aticamente?} La disponibilidad diaria (no solo mensual) de camiones, las condiciones clim\'aticas variables del corredor altoandino y el comportamiento del conductor, que seg\'un las autoridades de tr\'ansito es la causa principal de los siniestros (ONSV, 2026).
 \item \textbf{Si dispusieran de m\'as tiempo o informaci\'on, ¿c\'omo mejorar\'ian el modelo?} Incorporando un horizonte multiperiodo (semanal), restricciones de capacidad m\'axima por veh\'iculo (formulando un problema de transporte con flota heterog\'enea) y datos hist\'oricos propios de siniestralidad de la empresa en lugar del \'indice p\'ublico agregado.
 \item \textbf{¿Qu\'e otra t\'ecnica de Investigaci\'on de Operaciones evaluaron utilizar y por qu\'e finalmente la descartaron?} Se evalu\'o el m\'etodo de Gran M para incorporar restricciones de capacidad m\'axima por ruta, pero se descart\'o porque el problema, tal como se plante\'o, no requiere restricciones de desigualdad adicionales y el modelo de transporte balanceado ya garantiza factibilidad y optimalidad.
@@ -450,35 +462,16 @@ Se simul\'o una ca\'ida de 30\% en la oferta de Majes (de 1\,100 a 770 toneladas
 \end{enumerate}
 
 % ================================================================
-\section{Conclusiones y recomendaciones}
+\section{An\'alisis}
 % ================================================================
-\subsection*{Principales hallazgos}
-\begin{itemize}
-  \item El modelo de transporte con penalizaci\'on por riesgo permite reducir la exposici\'on a corredores viales cr\'iticos sin necesidad de restricciones expl\'icitas de seguridad, incorporando dicho criterio directamente en el costo.
-  \item La soluci\'on \'optima concentra los env\'ios de cada centro de acopio en uno o dos destinos principales, en lugar de repartir la carga proporcionalmente, lo que reduce el n\'umero de rutas activas y facilita el control operativo.
-  \item El sistema es robusto ante variaciones en la disponibilidad de acopio, pero vulnerable a incrementos generalizados en el costo de combustible.
-\end{itemize}
 
-\subsection*{Aportes del modelo}
-Provee a la empresa un criterio cuantitativo, replicable y auditable para la asignaci\'on mensual de carga, reemplazando la asignaci\'on emp\'irica actual y dejando trazabilidad expl\'icita del \emph{trade-off} entre costo y seguridad vial.
+\noindent\textit{Esta secci\'on debe completarse con el an\'alisis objetivo de los resultados obtenidos, incluyendo: interpretaci\'on de la soluci\'on \'optima, comparaci\'on entre escenarios, evaluaci\'on de las restricciones m\'as cr\'iticas, y hallazgos relevantes del an\'alisis de sensibilidad.}
 
-\subsection*{Recomendaciones para la organizaci\'on}
-\begin{enumerate}
-  \item Adoptar el plan \'optimo de env\'ios como pol\'itica de asignaci\'on mensual, revis\'andolo cada vez que cambien costos de flete o demanda de los destinos.
-  \item Negociar con la aseguradora coberturas diferenciadas por ruta, dado que el modelo cuantifica expl\'icitamente qu\'e rutas concentran mayor riesgo.
-  \item Explorar contratos de combustible a precio fijo, dado que el Escenario A mostr\'o que este es el par\'ametro que m\'as impacta el costo total.
-  \item Priorizar el mantenimiento preventivo y la antig\"uedad de las unidades asignadas a las rutas Lima y Cusco, identificadas como las de mayor \'indice de riesgo.
-\end{enumerate}
+% ================================================================
+\section{Conclusiones}
+% ================================================================
 
-\subsection*{Posibles trabajos futuros}
-Extender el modelo a un horizonte multiperiodo, incorporar variables binarias de selecci\'on de transportista y considerar un modelo de transporte con m\'ultiples productos (p\'aprika, palta, quinua) con requerimientos de conservaci\'on distintos.
-
-\subsection*{``Lecciones aprendidas'' (reflexi\'on del equipo)}
-\begin{itemize}
-  \item \textbf{¿Qu\'e fue lo m\'as dif\'icil al modelar un problema real?} Traducir un criterio cualitativo (seguridad vial) en un par\'ametro num\'erico comparable con el costo monetario, sin caer en una simplificaci\'on excesiva.
-  \item \textbf{¿Qu\'e habilidad consideran que desarrollaron m\'as?} La formulaci\'on de modelos matem\'aticos a partir de informaci\'on dispersa y de fuentes p\'ublicas heterog\'eneas (reportes de accidentalidad, normativa de transporte, datos operativos).
-  \item \textbf{¿Qu\'e recomendar\'ian a un equipo que desarrolle este proyecto el pr\'oximo semestre?} Recolectar desde el inicio datos primarios de la propia organizaci\'on (tarifas reales de flete, historial de siniestros de la flota) para no depender \'unicamente de fuentes agregadas p\'ublicas.
-\end{itemize}
+\noindent\textit{Esta secci\'on debe completarse con las conclusiones derivadas del an\'alisis, respondiendo a los objetivos planteados en la Introducci\'on: si se logr\'o minimizar el costo ajustado por riesgo, cu\'ales rutas dominan el plan \'optimo, qu\'e restricciones resultaron m\'as limitantes, y las recomendaciones finales para la organizaci\'on.}
 
 % ================================================================
 \section{Referencias bibliogr\'aficas}
@@ -513,6 +506,12 @@ Taha, H. A. (2017). \textit{Investigaci\'on de operaciones} (10.\textsuperscript
 
 \hangindent=1cm \hangafter=1
 Winston, W. L. (2005). \textit{Investigaci\'on de operaciones: aplicaciones y algoritmos} (4.\textsuperscript{a} ed.). Thomson Learning.
+
+\hangindent=1cm \hangafter=1
+Bazaraa, M., Jarvis, J. \& Sherali, H. (2010). \textit{Linear programming and network flows} (4.\textsuperscript{a} ed.). John Wiley \& Sons.
+
+\hangindent=1cm \hangafter=1
+Saaty, T. L. (2004). \textit{Optimization in integers and related extremes}. RWS Publications.
 
 \end{flushleft}
 
